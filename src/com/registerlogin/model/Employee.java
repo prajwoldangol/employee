@@ -36,10 +36,52 @@ public class Employee {
 		this.qualification = qualification;
 		this.income = income;
 	}
+	/**
+	 * @param name
+	 * @param ssn
+	 * @param email
+	 * @param phone
+	 * @param bank
+	 * @param qualification
+	 * @param income
+	 */
+	public Employee(String name, String ssn, String email, String phone, String bank, String qualification,
+			String income) {
+		super();
+		this.name = name;
+		this.ssn = ssn;
+		this.email = email;
+		this.phone = phone;
+		this.bank = bank;
+		this.qualification = qualification;
+		this.income = income;
+	}
 	public Employee() {
 		
 	}
 	
+	/**
+	 * @param name
+	 * @param password
+	 * @param ssn
+	 * @param email
+	 * @param phone
+	 * @param bank
+	 * @param qualification
+	 * @param income
+	 */
+	public Employee(String name, String password, String ssn, String email, String phone, String bank,
+			String qualification, String income) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.ssn = ssn;
+		this.email = email;
+		this.phone = phone;
+		this.bank = bank;
+		this.qualification = qualification;
+		this.income = income;
+	}
 	public int getId() {
 		return id;
 	}

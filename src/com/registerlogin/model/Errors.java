@@ -7,6 +7,9 @@ public class Errors {
 	/**
 	 * @param message
 	 */
+	public Errors() {
+		
+	}
 	public Errors(String message) {
 		super();
 		this.message = message;

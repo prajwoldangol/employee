@@ -14,16 +14,24 @@ h1, h2 {
 h2 {
 	font-weight: 500;
 }
-
-header a {
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	font-weight: 600;
-	color: #32a852;
-	margin-top:30px;
+header{
+	text-align:center;
+	margin-top:20px;
+	width: 90%;
+	margin: auto;
 }
 
+header span.error{
+	display:block ;
+	background:#dc3545;
+	padding:10px;
+	color:#ffffff;
+}
+header span.error-login{
+	
+	width: 400px;
+	margin:auto;
+}
 ::placeholder {
 	color: #6D7B8D;
 	text-align: center;
@@ -35,6 +43,10 @@ header a {
 	width: 90%;
 	margin: auto;
 	border: 2px solid #808080;
+}
+.login-wrap{
+	width:400px;
+	padding:10px;
 }
 
 .fwrapper {
@@ -51,7 +63,11 @@ header a {
 	/* flex-wrap: wrap; */
 	/* justify-content: center; */
 }
-
+.fwrapper .field-login{
+	justify-content:center;
+	padding:15px;
+	width:400px;
+}
 .fwrapper .field label {
 	flex-grow: 1;
 }
@@ -96,7 +112,7 @@ header a {
 	margin: 10px 0px;
 }
 
-input[type="submit"], .submitbtn a {
+input[type="submit"], .submitbtn a ,a.btn{
 	/* display: block; */
 	background: #32A852;
 	border: none;
@@ -111,13 +127,26 @@ input[type="submit"], .submitbtn a {
 	text-transform: uppercase;
 }
 
-input[type="submit"]:hover, .submitbtn a:hover {
-	background: #f44336;
-}
-.submitbtn a{
+.submitbtn a,a.btn{
 	text-decoration:none;
 	line-height:35px;
 	padding:10px;
+}
+a.btn{
+	margin-left:20px;
+	background:#007bff;
+}
+a.btn:hover{
+	background:#0069d9;
+}
+a.btn-log{
+	background:#32A852;
+}
+a.btn-logout{
+	background:#dc3545;
+}
+input[type="submit"]:hover, .submitbtn a:hover,a.btn-log:hover,a.btn-logout:hover{
+	background: #f44336;
 }
 .tables{
 	width:90%;

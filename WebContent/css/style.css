@@ -20,6 +20,18 @@ header{
 	width: 90%;
 	margin: auto;
 }
+header.portal{
+	margin:30px 0px;
+}
+header.portal h2{
+	display:inline;
+}
+header.portal select.filter{
+	
+	width:100px;
+	font-size:20px;
+	margin-left:20px;
+}
 
 header span.error{
 	display:block ;
@@ -154,6 +166,7 @@ input[type="submit"]:hover, .submitbtn a:hover,a.btn-log:hover,a.btn-logout:hove
 }
 table{
 	border-collapse:collapse;
+	margin:auto;
 }
 table th, table td{
 	padding:10px;

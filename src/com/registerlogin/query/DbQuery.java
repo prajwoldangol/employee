@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.registerlogin.model.Employee;
 
@@ -89,6 +91,20 @@ public class DbQuery {
 		}
 		
 		return matched ;
+	}
+	
+	public List<Employee> getAll() throws ClassNotFoundException, SQLException{
+		
+		List<Employee> emp = new ArrayList<>();
+		
+		Connection con 	= getInstance();
+		PreparedStatement ps = con.prepareStatement("select * from emp_details");
+		ResultSet rs 	= ps.executeQuery() ;
+		while(rs.next()) {
+			emp.add(new Employee(rs.getString("emp_name"),rs.getString("emp_ssn"),rs.getString("emp_email"),rs.getString("emp_phone")
+					,rs.getString("emp_bank"),rs.getString("emp_qualification"),rs.getString("emp_income")));
+		}
+		return emp ;
 	}
 
 }

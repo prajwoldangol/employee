@@ -53,7 +53,12 @@ public class EmployeController extends HttpServlet {
 		request.setAttribute("url", url);
 		switch(process) {
 		case "/userportal":
-			showPortal(request,response);
+			try {
+				showPortal(request,response);
+			} catch (ClassNotFoundException | ServletException | IOException | SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			break;
 		case "/register":
 			registerForm(request,response);
@@ -106,7 +111,7 @@ public class EmployeController extends HttpServlet {
 		
 		response.sendRedirect(getDomain(request)+"/login");
 	}
-	private void showPortal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void showPortal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		HttpSession session 	= request.getSession();
 		Object user		= session.getAttribute("user") ;
@@ -121,10 +126,13 @@ public class EmployeController extends HttpServlet {
 //			return;
 		}else {
 			
+			List <Employee> em 	= query.getAll() ;
+			 request.setAttribute("employee", em);
 			 dispatcher = request.getRequestDispatcher("userportal.jsp");
 		}
 		dispatcher.forward(request,response);
 	}
+	
 	private void doLogin(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email 	=  request.getParameter("username");

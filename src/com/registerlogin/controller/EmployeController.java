@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -115,6 +116,7 @@ public class EmployeController extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session 	= request.getSession();
 		Object user		= session.getAttribute("user") ;
+		//String filter  = request.getParameter("filter");
 		List<Errors> messages 	= new ArrayList<>();
 		RequestDispatcher dispatcher;
 		if( user == null ) {
@@ -127,8 +129,27 @@ public class EmployeController extends HttpServlet {
 		}else {
 			
 			List <Employee> em 	= query.getAll() ;
-			 request.setAttribute("employee", em);
-			 dispatcher = request.getRequestDispatcher("userportal.jsp");
+			Iterator <Employee> itr = em.iterator();
+			try {
+				String filter  = request.getParameter("filter");
+				if(ValidateData.isValidNum(filter) && filter != null ) {
+					
+					while(itr.hasNext()) {
+						Employee emps = itr.next() ;
+						if( Integer.parseInt(emps.getIncome()) < Integer.parseInt(filter) ) {
+							itr.remove();
+						}
+					}
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				
+				request.setAttribute("employee", em);
+				dispatcher = request.getRequestDispatcher("userportal.jsp");
+			}
+			
 		}
 		dispatcher.forward(request,response);
 	}

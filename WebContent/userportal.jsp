@@ -25,12 +25,14 @@
 	<div class="tables">
 	<header class="portal">
 		<h2> Filter By Income </h2>
-		<select name="filter" class="filter">
+		<select name="filter" class="filter" id="filter">
 		<option selected disabled> Choose</option>
+		<option value="<c:out value="${url}" />/userportal?filter=5000">5000</option>
 		<option value="<c:out value="${url}" />/userportal?filter=6000">6000</option>
 		<option value="<c:out value="${url}" />/userportal?filter=7000">7000</option>
 		<option value="<c:out value="${url}" />/userportal?filter=8000">8000</option>
 		<option value="<c:out value="${url}" />/userportal?filter=9000">9000</option>
+		<option value="<c:out value="${url}" />/userportal?filter=10000">10000</option>
 		</select>
 	</header>
 		<table>
@@ -63,7 +65,13 @@
 	
 		</div>
 	</section>
-
+<script type="text/javascript">
+	var select = document.getElementById("filter");
+	
+	select.onchange = function(){
+		window.location = this.value ;
+	};
+</script>
 
 </body>
 </html>

@@ -43,6 +43,7 @@ header span.error-login{
 	
 	width: 400px;
 	margin:auto;
+	border: 2px solid #dc3545;
 }
 ::placeholder {
 	color: #6D7B8D;

@@ -101,7 +101,7 @@ public class EmployeController extends HttpServlet {
 		}
 	}
 
-	private void doLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	private void doLogout(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
 //		HttpSession session = request.getSession();
@@ -109,7 +109,7 @@ public class EmployeController extends HttpServlet {
 			request.getSession().invalidate();
 		}
 //		session.invalidate();
-		
+//		loginForm(request,response);
 		response.sendRedirect(getDomain(request)+"/login");
 	}
 	private void showPortal(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
@@ -156,30 +156,39 @@ public class EmployeController extends HttpServlet {
 	
 	private void doLogin(HttpServletRequest request, HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email 	=  request.getParameter("username");
-		String password	=  request.getParameter("password") ;
-		boolean userexists 		= query.isDuplicate("emp_email = ?", email);
-		boolean correctData		= query.loginCheck(email, password) ;
-		List<Errors> messages 	= new ArrayList<>();
-//		PrintWriter out = response.getWriter();
 		
-		if( userexists) {
-			
-			if( !correctData ) {
-				messages.add(new Errors("Username/Password doesn't match")) ;
-				request.setAttribute("error", messages);
-				loginForm(request,response);
-			}else {
-				HttpSession session 	= request.getSession(true);
-				session.setAttribute("user", "loggedin");
-				response.sendRedirect(getDomain(request)+"/userportal");
-			}
-		}else {
-			messages.add(new Errors("Username Doesn't Exists"));
-			request.setAttribute("error", messages);
-			loginForm(request,response);
-		}
 		
+			HttpSession session 	= request.getSession(true);
+			session.setAttribute("user", "loggedin");
+			response.sendRedirect(getDomain(request)+"/userportal");
+		
+		
+		
+		
+//		String email 	=  request.getParameter("username");
+//		String password	=  request.getParameter("password") ;
+//		boolean userexists 		= query.isDuplicate("emp_email = ?", email);
+//		boolean correctData		= query.loginCheck(email, password) ;
+//		List<Errors> messages 	= new ArrayList<>();
+////		PrintWriter out = response.getWriter();
+//		
+//		if( userexists) {
+//			
+//			if( !correctData ) {
+//				messages.add(new Errors("Username/Password doesn't match")) ;
+//				request.setAttribute("error", messages);
+//				loginForm(request,response);
+//			}else {
+//				HttpSession session 	= request.getSession(true);
+//				session.setAttribute("user", "loggedin");
+//				response.sendRedirect(getDomain(request)+"/userportal");
+//			}
+//		}else {
+//			messages.add(new Errors("Username Doesn't Exists"));
+//			request.setAttribute("error", messages);
+//			loginForm(request,response);
+//		}
+//		
 //		
 //		if(userexists && correctData) {
 //			response.sendRedirect(getDomain(request)+"/userportal");
